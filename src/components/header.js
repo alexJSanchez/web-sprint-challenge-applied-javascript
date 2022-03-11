@@ -18,6 +18,7 @@ const Header = (title, date, temp) => {
   tempInfo.textContent = temp;
   header.appendChild(tempInfo);
   
+  return header;
   // TASK 1
   // ---------------------
   // Implement this function taking `title`, `date` and `temp` as its 3 args and returning the markup below.
@@ -39,6 +40,7 @@ const headerAppender = (selector) => {
   // It should create a header using the Header component above, passing arguments of your choosing.
   // It should append the header to the element in the DOM that matches the given selector.
   //
+  document.querySelector(selector).appendChild(Header("Lambda", 'March 11, 2022', "67*"))
 }
 
 export { Header, headerAppender }

@@ -6,15 +6,17 @@ const Header = (title, date, temp) => {
   let dateInfo = document.createElement('span');
   dateInfo.classList = 'date';
   dateInfo.textContent = date;
+  header.appendChild(dateInfo);
 //create h1
   let titleInfo = document.createElement('h1');
   titleInfo.classList = 'title';
   titleInfo.textContent = title;
+  header.appendChild(titleInfo)
   // create temp
   let tempInfo = document.createElement('span');
   tempInfo.classList = "temp";
   tempInfo.textContent = temp;
-  
+  header.appendChild(tempInfo);
   
   // TASK 1
   // ---------------------

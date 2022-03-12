@@ -44,7 +44,7 @@ const Card = (article) => {
  let headline = document.createElement('div');
  let author = document.createElement('div');
  let imgContainer = document.createElement('div');
- let image = document.createElement('div');
+ let image = document.createElement('img');
  let authorName = document.createElement('span')
 
  card.classList.add('card');
@@ -52,7 +52,10 @@ const Card = (article) => {
  author.classList.add('author');
  imgContainer.classList.add('img-container');
  
-headline.textContent = value.authorName
+headline.textContent = value.headline;
+image.src = value.authorPhoto;
+authorName.textContent = `By ${value.authorName}`;
+
 
 
  card.appendChild(headline);

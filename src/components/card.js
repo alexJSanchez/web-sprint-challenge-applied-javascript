@@ -27,25 +27,20 @@ const Card = (article) => {
   }
   console.log(articlesNameArray)
 
-  for (const [key, value] of Object.entries(article.articles.bootstrap)) {
-    console.log(value)
-  }
+  // for(let i = 0;i < articlesNameArray.length; i++){
+  //   if(article.articles === articlesNameArray[i]){
+  //     console.log('yes')
+  //   }else{
+  //     console.log('no')
+  //   }
+  // }
 
-  for(let i = 0;i < articlesNameArray.length; i++){
-    if(article.articles === articlesNameArray[i]){
-      console.log('yes')
-    }else{
-      console.log('no')
-    }
-  }
 
-console.log(article.articles.bootstrap)
-article.articles.bootstrap.forEach(element => {
-  console.log(element)
-});
 
   // create card
- let card = document.createElement('div');
+  let card = document.createElement('div');
+
+ for (const [key, value] of Object.entries(article.articles.bootstrap)) {
  let headline = document.createElement('div');
  let author = document.createElement('div');
  let imgContainer = document.createElement('div');
@@ -57,6 +52,7 @@ article.articles.bootstrap.forEach(element => {
  author.classList.add('author');
  imgContainer.classList.add('img-container');
  
+headline.textContent = value.authorName
 
 
  card.appendChild(headline);
@@ -65,6 +61,7 @@ article.articles.bootstrap.forEach(element => {
  imgContainer.appendChild(image);
  author.appendChild(authorName);
 
+}
 
 return card;
 

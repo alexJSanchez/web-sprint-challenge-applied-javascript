@@ -40,7 +40,6 @@ const tabsAppender = (selector) => {
    let myData = resp.data.topics;
     document.querySelector(selector).appendChild(Tabs(myData));
   })
-  
 }
 
 export { Tabs, tabsAppender }

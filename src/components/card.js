@@ -19,6 +19,30 @@ const Card = (article) => {
   //   </div>
   // </div>
   //
+  
+  let articlesNameArray = []
+  //for in loop to make an array of names
+  for(let subject in article.articles){
+    articlesNameArray.push(subject)
+  }
+  console.log(articlesNameArray)
+
+  for (const [key, value] of Object.entries(article.articles.bootstrap)) {
+    console.log(value)
+  }
+
+  for(let i = 0;i < articlesNameArray.length; i++){
+    if(article.articles === articlesNameArray[i]){
+      console.log('yes')
+    }else{
+      console.log('no')
+    }
+  }
+
+console.log(article.articles.bootstrap)
+article.articles.bootstrap.forEach(element => {
+  console.log(element)
+});
 
   // create card
  let card = document.createElement('div');
@@ -28,6 +52,13 @@ const Card = (article) => {
  let image = document.createElement('div');
  let authorName = document.createElement('span')
 
+ card.classList.add('card');
+ headline.classList.add('headline');
+ author.classList.add('author');
+ imgContainer.classList.add('img-container');
+ 
+
+
  card.appendChild(headline);
  card.appendChild(author);
  author.appendChild(imgContainer);
@@ -35,6 +66,7 @@ const Card = (article) => {
  author.appendChild(authorName);
 
 
+return card;
 
 }
 
@@ -51,7 +83,7 @@ const cardAppender = (selector) => {
     axios.get('http://localhost:5001/api/articles')
     .then(resp => {
       console.log(resp.data)
-      document.querySelector('.card-container').appendChild(Card(resp.data))
+      document.querySelector(selector).appendChild(Card(resp.data))
     })
     .catch(err => {console.log(err)})
 }

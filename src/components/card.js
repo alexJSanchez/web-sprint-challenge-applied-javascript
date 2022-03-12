@@ -25,7 +25,6 @@ const Card = (article) => {
   for(let subject in article.articles){
     articlesNameArray.push(subject)
   }
-console.log(articlesNameArray)
 
   // for(let i = 0;i < articlesNameArray.length; i++){
   //   if(article.articles === articlesNameArray[i]){
@@ -35,16 +34,17 @@ console.log(articlesNameArray)
   //   }
   // }
 
-console.log(article)
 
 
 
 
   // create card
+  
+console.log(article)
   let card = document.createElement('div');
+
 for ( let i = 0;i < articlesNameArray.length; i++){
   let choice = articlesNameArray[i];
-  console.log(choice)
 for (const [key, value] of Object.entries(article.articles[choice])) {
  let headline = document.createElement('div');
  let author = document.createElement('div');
@@ -67,11 +67,10 @@ authorName.textContent = `By ${value.authorName}`;
  imgContainer.appendChild(image);
  author.appendChild(authorName);
 
-}}
-
-console.log(card)
+}
+ 
+}
 return card;
-
 }
 
 const cardAppender = (selector) => {

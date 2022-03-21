@@ -19,12 +19,13 @@ const Card = (article) => {
   //   </div>
   // </div>
   //
-  
-  let articlesNameArray = []
+
+  let articlesNameArray = [];
   //for in loop to make an array of names
-  for(let subject in article.articles){
-    articlesNameArray.push(subject)
+  for (let subject in article.articles) {
+    articlesNameArray.push(subject);
   }
+  console.log(articlesNameArray)
 
   // for(let i = 0;i < articlesNameArray.length; i++){
   //   if(article.articles === articlesNameArray[i]){
@@ -34,44 +35,37 @@ const Card = (article) => {
   //   }
   // }
 
-
-
-
-
   // create card
+
+  console.log(article);
+
+    let card = document.createElement("div"); 
+      let headline = document.createElement("div");
+      let author = document.createElement("div");
+      let imgContainer = document.createElement("div");
+      let image = document.createElement("img");
+      let authorName = document.createElement("span");
+
+      card.classList.add("card");
+      headline.classList.add("headline");
+      author.classList.add("author");
+      imgContainer.classList.add("img-container");
+
+      headline.textContent = article.headline;
+      image.src = article.authorPhoto;
+      authorName.textContent = `By ${article.authorName}`;
+
+      card.appendChild(headline);
+      card.appendChild(author);
+      author.appendChild(imgContainer);
+      imgContainer.appendChild(image);
+      author.appendChild(authorName);
+    
+    console.log(card)
+    return card;
   
-console.log(article)
-  let card = document.createElement('div');
-
-for ( let i = 0;i < articlesNameArray.length; i++){
-  let choice = articlesNameArray[i];
-for (const [key, value] of Object.entries(article.articles[choice])) {
- let headline = document.createElement('div');
- let author = document.createElement('div');
- let imgContainer = document.createElement('div');
- let image = document.createElement('img');
- let authorName = document.createElement('span')
-
- card.classList.add('card');
- headline.classList.add('headline');
- author.classList.add('author');
- imgContainer.classList.add('img-container');
  
-headline.textContent = value.headline;
-image.src = value.authorPhoto;
-authorName.textContent = `By ${value.authorName}`;
-
- card.appendChild(headline);
- card.appendChild(author);
- author.appendChild(imgContainer);
- imgContainer.appendChild(image);
- author.appendChild(authorName);
-
-}
- 
-}
-return card;
-}
+};
 
 const cardAppender = (selector) => {
   // TASK 6
@@ -83,11 +77,20 @@ const cardAppender = (selector) => {
   // Append each card to the element in the DOM that matches the selector passed to the function.
   //
 
-    axios.get('http://localhost:5001/api/articles')
-    .then(resp => {
-      document.querySelector(selector).appendChild(Card(resp.data))
+  axios
+    .get("http://localhost:5001/api/articles")
+    .then((resp) => {
+      for(let keys in resp.data.articles){
+        resp.data.articles[keys].forEach(element => {
+          console.log(element)
+          document.querySelector(selector).appendChild(Card(element));
+        });
+      }
+      
     })
-    .catch(err => {console.log(err)})
-}
+    .catch((err) => {
+      console.log(err);
+    });
+};
 
-export { Card, cardAppender }
+export { Card, cardAppender };
